@@ -27,11 +27,3 @@
     ?>
 
 </html>
-
-/*
-
--> Créer le formulaire avec les champs
--> Permettre d'envoyer du texte pour les attributs et une image pour chaque partie du corps  -> Si image trop compliqué, on l'ajoute à la main.
--> Vérification dans la bdd si les champs sont disponible (PK)
-
--> Le programme créer les créatures avec la nouvelle renseignée
