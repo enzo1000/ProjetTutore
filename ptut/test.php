@@ -11,14 +11,16 @@
 </body>
 
 <?php
+
+echo "coucou";
 $dir_img = "images/";
 include_once "connexion.php";
 global $conn;
-$jambe = $conn->query("SELECT IDJambe FROM Jambe");
-$tete = $conn->query("SELECT IDTete FROM Tete");
-$corps = $conn->query("SELECT IDCorps FROM Corps");
+$jambe = $conn->query("SELECT IDJambe FROM jambe");
+$tete = $conn->query("SELECT IDTete FROM tete");
+$corps = $conn->query("SELECT IDCorps FROM corps");
 
-$nbligne = $conn->query("SELECT COUNT(IDTete) as nb FROM Tete");
+$nbligne = $conn->query("SELECT COUNT(IDTete) as nb FROM tete");
 
 $nbligne = $nbligne->fetch(PDO::FETCH_ASSOC);
 
@@ -31,14 +33,14 @@ $b = rand(1, $nbc);
 $c = rand(1, $nbc);
 
 //$req = "SELECT IDCreature FROM Creature JOIN Tete ON Creature.IDTete = Tete.I>
-$creature =$conn->query("SELECT IDCreature FROM Creature JOIN Tete ON Creature.>
-$creature = $creature->fetch(PDO::FETCH_ASSOC);
-
+//$creature =$conn->query("SELECT IDCreature FROM Creature JOIN Tete ON Creature.>
+//$creature = $creature->fetch(PDO::FETCH_ASSOC);
+/*
 if($creature ==null){
     echo "cette creature nexiste pas on doit l'ajouter";
 }
 else{ echo "cette crezture existe";}
-
+*/
 
 echo "<div class='creature'>";
 echo "<img src=" . $dir_img . "tetes/" . $a . ".png "." class='tete'/>";
@@ -49,16 +51,6 @@ echo "</div>";
 
 ?>
 
-<<<<<<< HEAD
+
 </html>
 
-/*
-
--> Créer le formulaire avec les champs
--> Permettre d'envoyer du texte pour les attributs et une image pour chaque par>
--> Vérification dans la bdd si les champs sont disponible (PK)
-
--> Le programme créer les créatures avec la nouvelle renseignée
-=======
-</html>
->>>>>>> origin/Enzo
