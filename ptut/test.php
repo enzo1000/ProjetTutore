@@ -49,6 +49,7 @@ echo "</div>";
 
 ?>
 
+<<<<<<< HEAD
 </html>
 
 /*
@@ -58,3 +59,6 @@ echo "</div>";
 -> Vérification dans la bdd si les champs sont disponible (PK)
 
 -> Le programme créer les créatures avec la nouvelle renseignée
+=======
+</html>
+>>>>>>> origin/Enzo
