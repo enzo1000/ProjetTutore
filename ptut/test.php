@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
    <head>
       <title>This is document title</title>
       <link rel="stylesheet" href="styles/style.css">
