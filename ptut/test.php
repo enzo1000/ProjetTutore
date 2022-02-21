@@ -14,6 +14,7 @@
     <?php
         $dir_img = "/ptut/images/";
         include_once "connexion.php";
+	echo "coucou";
 
         $a = rand(1, 2);
         $b = rand(1, 2);
