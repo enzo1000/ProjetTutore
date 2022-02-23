@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>This is document title</title>
+    <title>Randumon</title>
     <link rel="stylesheet" href="styles/style2.css">
 </head>
 
 <body>
-<h1>This is a heading</h1>
+<h1>Random créatures</h1>
 
 <?php
 
@@ -46,14 +46,11 @@ if (isset($_POST['bouton1'])) {
     echo "<img src=" . $dir_img . "corps/" . $b . ".png " . " class='corps'/>";
     echo "<img src=" . $dir_img . "jambes/" . $c . ".png " . " class='jambes'/>";
     echo "</div>";
-
-
-
 }
 
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-    <input type="SUBMIT" name="bouton1" value="Le bouton 1">
+    <input type="SUBMIT" name="bouton1" value="Tirer créature">
 </form>
 
 </body>
