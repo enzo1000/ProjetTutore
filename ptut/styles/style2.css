@@ -1,6 +1,6 @@
 .creature {
-    /*background-color: blue;*/
-    display: flex;                                                                                                                               flex-direction: column;
+    display: flex;
+    flex-direction: column;
     width: 200px;
     height: 400px;
     align-content: center;
@@ -9,25 +9,23 @@
 img {
     height: 90%;
 }
+
 .tete{
     align-items: center;
     position: relative;
     z-index: 3;
-    /*background-color: green;*/
 }
 .corps{
     align-items: center;
     position: relative;
     bottom:11%;
-    /* background-color: pink;*/
-     z-index: 2;
+    z-index: 2;
 }
-.jambe{
+.jambes{
     align-items: center;
     position: relative;
     z-index: 1;
     bottom: 18%;
-    /*background-color: rebeccapurple;*/
 }
 
 /*img:first-child {
