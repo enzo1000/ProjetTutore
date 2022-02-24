@@ -6,7 +6,6 @@
     $db = 'ptut';
     $host = 'localhost';
     $port = 3307;
-    echo "hello world";
 
     try {
           $conn = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $password);
