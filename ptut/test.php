@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles/style2.css">
 </head>
 
+<<<<<<< HEAD
 <body>
 <h1>Random créatures</h1>
 
@@ -49,6 +50,10 @@ if (isset($_POST['bouton1'])) {
 }
 
 ?>
+
+
+
+
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
     <input type="SUBMIT" name="bouton1" value="Tirer créature">
 </form>
@@ -57,3 +62,6 @@ if (isset($_POST['bouton1'])) {
 
 </html>
 
+=======
+</html>
+>>>>>>> a003735 (Test)
