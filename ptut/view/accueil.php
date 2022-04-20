@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../a_trier/styles/style.css">
+    <link rel="stylesheet" href="CSS/index.css">
     <title>Jeu de <?php echo $_SESSION['pseudo'];?></title>
     <!--<script src="script.js" type="text/javascript"></script>-->
 </head>
