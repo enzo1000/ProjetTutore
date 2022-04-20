@@ -1,0 +1,71 @@
+:root {
+    --hauteur-ligne: 500px; /*Variable pour modifier la taille de la ligne */
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+
+    height: calc(var(--hauteur-ligne) + 20%);    /*Fonction calcul pour changer de manière dynamique la hauteur de la page*/
+    width: 100%;
+
+    background-color: yellow;
+    border: 1px solid;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.ligne {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    height: var(--hauteur-ligne);
+
+    background-color: aqua;
+    border: 2px solid;
+}
+
+.boites {
+    display: flex;
+    flex-grow: 2;
+
+    background-color: grey;
+    height: var(--hauteur-ligne);
+    width:  40%;
+}
+
+.bouton {
+    display: flex;
+
+    background-color: red;
+    height: var(--hauteur-ligne);
+    width: 50px;
+}
+
+#data {
+    display: flex;
+    flex-grow: 2;
+
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 25px;           /*Si en % alors les data traversent la ligne vers le bas*/
+
+    background-color: blue;
+    height: calc(var(--hauteur-ligne) - 50px ); /*Fonction calcul*/
+    width:  40%;
+}
+
+#collection {
+    display: flex;
+    flex-grow: 1;
+
+    background-color: blueviolet;
+
+    height: var(--hauteur-ligne);
+    width: 5%;
+
+}
