@@ -5,8 +5,8 @@ class Conf{
   static private $databases = array(
     'hostname' => 'localhost',
     'database' => 'ptut',
-    'login' => 'root',
-    'password' => 'root'
+    'login' => 'ptut',
+    'password' => '123'
   );
 
   static public function getDebug()

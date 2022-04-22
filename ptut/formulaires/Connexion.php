@@ -37,6 +37,7 @@ try {
         var_dump($joueur);
         
         $_SESSION['joueur']=$joueur;
+        $_SESSION['mail']=$joueur[0]['mail'];
         header("Location:../view/accueil.php");
 
         /*

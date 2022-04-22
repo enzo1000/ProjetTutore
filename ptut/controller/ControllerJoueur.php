@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require_once '../model/ModelJoueur.php';
 require_once '../model/ModelCreature.php';
 echo "<pre>";
@@ -16,6 +17,8 @@ class ControllerJoueur{
 
     public static function readAllCreatures(){
         $tab_c=self::getJoueur()->getAllCreatures();
+        //echo "<pre>";
+        //var_dump($tab_c);
         foreach($tab_c as $IDcreature){
             $dir_img = "../view/images/";
             echo "<div class='creature'>";

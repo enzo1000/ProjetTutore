@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,8 +15,9 @@ session_start();
 
 <div id="main">
     <h1> loremipsum </h1>
-
-
+    <?php echo "<span> {$_SESSION['pseudo']} </span>"; ?>
+    <?php echo "<a href='../formulaires/deconnexion.php'> se déconnecter </a>"; ?>
+   
     <div class="boxe_timer">
         <form>
             <div id="horloge">...</div>
@@ -62,8 +65,8 @@ session_start();
 
 </div>
 
-
 <div class="ligne">
+        
     <div class="bouton">
 
     </div>
@@ -81,7 +84,7 @@ session_start();
     </div>
 
     <div id="collection">
-
+        <?php echo "<a href='../controller/routeur.php?action=readAllCreatures'> inventaire </a>"; ?>
     </div>
 
 </div>
@@ -142,6 +145,8 @@ session_start();
 
 
                     //echo("<meta http-equiv='refresh' content='1'>");
+                    $sql="INSERT INTO possede VALUES ('{$a}{$b}{$c}n','{$_SESSION['mail']}')";
+                    $conn->query($sql);
                 }
 
 
