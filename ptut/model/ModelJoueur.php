@@ -1,6 +1,6 @@
 <?php
-require_once '../model/Model.php';
-require_once '../model/ModelCreature.php';
+require_once File::build_path(array("model","Model.php"));
+
 class ModelJoueur{
     private $mail;
     private $pseudo;
@@ -18,6 +18,7 @@ class ModelJoueur{
 
     public function getAllCreatures(){
         try{
+          require_once File::build_path(array("model","ModelCreature.php"));
             $pdo = Model::getPDO();
             
             $rep=$pdo->query("SELECT p.IDCreature, nom, couleur, PV, IDTete, IDCorps, IDJambe 
@@ -53,6 +54,9 @@ class ModelJoueur{
             }
             die();
           }
+    }
+    public function get($attribut){
+        return $this->$attribut;
     }
 
 

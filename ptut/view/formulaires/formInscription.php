@@ -1,5 +1,4 @@
 <?php
-session_start();
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 ?>
 
@@ -9,9 +8,9 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
         <meta charset="utf-8" />
     </head>
     <body>
-        <form method="POST" action="inscription.php">
+        <form method="POST" action="index.php?controller=ICD&action=inscription">
             <fieldset>
-              <legend>Mon formulaire :</legend>
+              <legend>Inscription :</legend>
               <p>
                 <label for="mail">Mail</label> :
                 <input type="text" placeholder="joueur.gmail.com" name="mail" id="mail">

@@ -1,7 +1,13 @@
 <?php
   session_start();
-?>
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+  require_once 'lib/File.php';
+  require_once File::build_path(array("controller","routeur.php"));
 
+  
+  //require_once File::build_path(array("model","modelJoueur.php"));
+  // require_once 'controller/routeur.php';
+  /*
 <html>
   <head>
     <meta charset="UTF-8">
@@ -16,6 +22,7 @@
     </div>
 
 </html>
+*/
+?>
 
-    
 

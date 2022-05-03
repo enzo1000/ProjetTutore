@@ -12,6 +12,9 @@
     background-color: yellow;
     border: 1px solid;
 }
+#deconnexion, #joueur{
+    margin: 0.5% 1%;
+}
 
 h1 {
     display: flex;
