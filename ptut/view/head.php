@@ -1,4 +1,3 @@
-<html>
 <head>
     <meta charset="UTF-8">
     <script src="view/js/jquery.js"></script>
@@ -10,13 +9,3 @@
             else echo "CréAnimals";
       ?></title>
 </head>
-<body onload="timer()">
-<?php
-  session_start();
-  error_reporting(E_ERROR | E_WARNING | E_PARSE);
-  require_once 'lib/File.php';
-  //require_once File::build_path(array("view","head.php"));
-  require_once File::build_path(array("controller","routeur.php"));
-?>
-</body>
-</html>

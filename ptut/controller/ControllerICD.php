@@ -46,6 +46,7 @@ class ControllerICD{
             $_SESSION['mail']=$reponse[0]['mail'];
             $_SESSION['mdp']=$reponse[0]['mdp'];
             //var_dump($_SESSION['mail']);
+            require_once File::build_path(array("view","header.php"));
             require_once File::build_path(array("view","accueil.php"));
             // header("Location:view/accueil.php");
     

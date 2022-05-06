@@ -1,15 +1,9 @@
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 ?>
-<html>
-    <head>
-        <title>Formulaire Connexion</title>
-        <meta charset="utf-8" />
-    </head>
-    <body>
         <form method="POST" action="index.php?controller=ICD&action=connexion">
             <fieldset>
-              <legend>Connxeion :</legend>
+              <legend>Connexion :</legend>
               <p>
                 <label for="mail">Mail</label> :
                 <input type="text" placeholder="joueur.gmail.com" name="mail" id="mail" required>
@@ -23,7 +17,3 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
               </p>
             </fieldset> 
           </form>
-
-    </body>
-
-</html>

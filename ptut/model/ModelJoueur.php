@@ -20,10 +20,7 @@ class ModelJoueur{
         try{
           require_once File::build_path(array("model","ModelCreature.php"));
             $pdo = Model::getPDO();
-            
-            $rep=$pdo->query("SELECT p.IDCreature, nom, couleur, PV, IDTete, IDCorps, IDJambe 
-                            FROM possede p JOIN creature c ON p.idCreature=c.idCreature WHERE mail='$this->mail'");
-            
+            $rep=$pdo->query("SELECT * FROM creature WHERE mail='$this->mail'");
             $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelCreature');
             $tab = $rep->fetchAll();
             return $tab;
