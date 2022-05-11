@@ -13,7 +13,7 @@ function timer() {
     document.getElementById("horloge").style.display = 'contents';
     document.getElementById("tirage").style.display = 'none';
     var dt = new Date()
-    //document.getElementById("horloge").innerHTML=(24-dt.getHours())+":"+(59-dt.getMinutes())+":"+(59-dt.getSeconds());
+    //document.getElementById("horloge").innerHTML=(23-dt.getHours())+":"+(59-dt.getMinutes())+":"+(59-dt.getSeconds());
     document.getElementById("horloge").innerHTML = "Tirage dans " + (59 - dt.getSeconds()) + " secondes";
 
     if (59 - dt.getSeconds() === 0) {
@@ -26,6 +26,25 @@ function timer() {
         monEvent.style.display = 'none';
         document.getElementById("tirage").style.display = 'contents';
 */
+
+}
+
+function minuteur(date){
+
+    document.getElementById("horloge").style.display = 'contents';
+    document.getElementById("tirage").style.display = 'none';
+    var dernierTirage = new Date(date);
+    var tempsActuel = mediumDateFormat.format(new Date());
+    console.log("dernierTirage" , dernierTirage.getDay(), dernierTirage.getHours(), dernierTirage.getMinutes(), dernierTirage.getSeconds());
+    console.log("tempsActuel" , tempsActuel);
+    document.getElementById("horloge").innerHTML=(dernierTirage.getDay()-tempsActuel.getDay(), dernierTirage.getHours()-tempsActuel.getHours(), dernierTirage.getMinutes()-tempsActuel.getMinutes(), dernierTirage.getSeconds()-tempsActuel.getSeconds());
+    if ((dernierTirage.getSeconds()-tempsActuel.getSeconds()) === 0) {
+        var monEvent = document.getElementById("horloge");
+        monEvent.style.display = 'none';
+        document.getElementById("tirage").style.display = 'contents';
+    } else setTimeout("minuteur(date)", 1000);
+
+
 }
 
 

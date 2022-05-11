@@ -13,7 +13,7 @@ class Model {
     $password=Conf::getPassword();
 
     try{
-      self::$pdo=new PDO("mysql:host=$hostname;dbname=$database_name",$login,$password,
+      self::$pdo=new PDO("mysql:host=$hostname;port=3307;dbname=$database_name",$login,$password,
                           // sert à ce que toutes les chaines de caractères en entrée et sortie de MySql 
                           //soit dans le codage UTF-8 (pas obligatoire)
                           array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

@@ -80,7 +80,9 @@ class ModelCreature{
         //random PV
         $pv=rand(10,200);
 
+
         $nomCreature=self::ajouteCreature($randTete,$randCorps,$randJambe,$randCouleur,$pv);
+
         $dir_img = "view/images/";
         echo "<div class='creature'>
         <p style='color: $randCouleur;'>$nomCreature</p>

@@ -10,7 +10,10 @@
             else echo "CréAnimals";
       ?></title>
 </head>
-<body onload="timer()">
+<?php
+echo '<body onload="timer()">';
+?>
+
 <?php
   session_start();
   error_reporting(E_ERROR | E_WARNING | E_PARSE);

@@ -5,16 +5,19 @@ class ModelJoueur{
     private $mail;
     private $pseudo;
     private $mdp;
+    private $tirage;
 
-    public function __construct($m=NULL, $p=NULL, $mdp=NULL)
+    public function __construct($m=NULL, $p=NULL, $mdp=NULL, $tirage=NULL)
     {
         if(!is_null($m) && !is_null($p) && !is_null($mdp)){
              $this->mail = $m;
             $this->pseudo = $p;
             $this->mdp = $mdp;
+            $this->tirage = $tirage;
         }
            
     }
+
 
     public function getAllCreatures(){
         try{
@@ -35,10 +38,10 @@ class ModelJoueur{
           }
     }
 
-    public function afficherInfoJoueur(){
+    public static function afficherInfoJoueur(){
         try{
             $pdo = Model::getPDO();
-            $rep=$pdo->query("SELECT * FROM joueur WHERE mail=$this->mail");
+            $rep=$pdo->query("SELECT * FROM joueur WHERE mail={$_SESSION['mail']}");
             $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelJoueur');
             $tab = $rep->fetchAll();
             return $tab;
