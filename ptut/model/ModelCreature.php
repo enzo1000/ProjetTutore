@@ -108,6 +108,7 @@ class ModelCreature{
         $nomJambe=$nomJambe["nomJambe"];
         $nomCreature="{$nomTete}{$nomCorps}{$nomJambe}";
         $pdo->query("INSERT INTO creature VALUES('{$_SESSION['mail']}','Crea{$nbCreature}','$nomCreature', '$couleur',$pv,$tete,$corps,$jambe)");
+        $pdo->query("UPDATE joueur SET tirage=CURRENT_TIMESTAMP WHERE mail = '" . $_SESSION['mail']."'");
         return $nomCreature;
     }
 }

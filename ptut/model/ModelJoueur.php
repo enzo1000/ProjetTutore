@@ -9,7 +9,7 @@ class ModelJoueur{
 
     public function __construct($m=NULL, $p=NULL, $mdp=NULL, $tirage=NULL)
     {
-        if(!is_null($m) && !is_null($p) && !is_null($mdp)){
+        if(!is_null($m) && !is_null($p) && !is_null($mdp) && !is_null($tirage)){
              $this->mail = $m;
             $this->pseudo = $p;
             $this->mdp = $mdp;
@@ -58,6 +58,16 @@ class ModelJoueur{
     public function get($attribut){
         return $this->$attribut;
     }
+
+    /**
+     * @return mixed|null
+     */
+    public function getTirage()
+    {
+        return $this->tirage;
+    }
+
+
 
 
 }

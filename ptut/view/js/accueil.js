@@ -1,10 +1,8 @@
-
-$(document).ready(function() {
-    $("#joueur").click(function() {
+$(document).ready(function () {
+    $("#joueur").click(function () {
         // Append a new empty row with two buttons in the end
         $("#joueur").append(`coucou`);
     });
-
 
 
 });
@@ -21,35 +19,47 @@ function timer() {
         monEvent.style.display = 'none';
         document.getElementById("tirage").style.display = 'contents';
     } else setTimeout("timer()", 1000);
-/*
-        var monEvent = document.getElementById("horloge");
-        monEvent.style.display = 'none';
-        document.getElementById("tirage").style.display = 'contents';
-*/
+    /*
+            var monEvent = document.getElementById("horloge");
+            monEvent.style.display = 'none';
+            document.getElementById("tirage").style.display = 'contents';
+    */
 
 }
 
-function minuteur(date){
+function minuteur() {
 
     document.getElementById("horloge").style.display = 'contents';
     document.getElementById("tirage").style.display = 'none';
-    var dernierTirage = new Date(date);
-    var tempsActuel = mediumDateFormat.format(new Date());
-    console.log("dernierTirage" , dernierTirage.getDay(), dernierTirage.getHours(), dernierTirage.getMinutes(), dernierTirage.getSeconds());
-    console.log("tempsActuel" , tempsActuel);
-    document.getElementById("horloge").innerHTML=(dernierTirage.getDay()-tempsActuel.getDay(), dernierTirage.getHours()-tempsActuel.getHours(), dernierTirage.getMinutes()-tempsActuel.getMinutes(), dernierTirage.getSeconds()-tempsActuel.getSeconds());
-    if ((dernierTirage.getSeconds()-tempsActuel.getSeconds()) === 0) {
+    console.log(document.getElementById("last-date"));
+    var dernierTirage = Date.parse(document.getElementById("last-date").value);
+    console.info(dernierTirage);
+    var tempsActuel = new Date();
+    console.info(tempsActuel - dernierTirage);
+
+    var temps = tempsActuel - dernierTirage;
+    dernierTirage=new Date(dernierTirage);
+    dernierTirage.setDate(dernierTirage.getDate() + 1);
+
+    var tempsRestant = new Date(dernierTirage - tempsActuel);
+
+
+    document.getElementById('horloge').innerText = tempsRestant.getHours() + ":" + tempsRestant.getMinutes() + ":" + tempsRestant.getSeconds();
+// TODO 3600*1000*24
+    if (temps >= 3600 * 1000) {
         var monEvent = document.getElementById("horloge");
         monEvent.style.display = 'none';
         document.getElementById("tirage").style.display = 'contents';
-    } else setTimeout("minuteur(date)", 1000);
+    } else {
+        setTimeout("minuteur()", 1000);
+    }
 
 
 }
 
 
 // function displayBlock(){
-  
+
 //     document.getElementById("modal").style.display = 'block';
 //     // document.getElementById("volet").style.display ='none';
 // };
@@ -58,10 +68,11 @@ function minuteur(date){
 //     document.getElementById("volet").style.display ='block';
 // }
 
-function changerFontImage(){
+function changerFontImage() {
     document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/ocean.jpg)";
 }
-function changerFontImage2(){
+
+function changerFontImage2() {
     document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/herbe.jpg)";
 }
 

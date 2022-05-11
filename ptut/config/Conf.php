@@ -4,9 +4,9 @@ class Conf{
 
   static private $databases = array(
     'hostname' => 'localhost',
-    'database' => 'burillec',
-    'login' => 'burillec',
-    'password' => '123456789'
+    'database' => 'ptut',
+    'login' => 'root',
+    'password' => 'root'
   );
 
   static public function getDebug()

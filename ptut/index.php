@@ -11,7 +11,7 @@
       ?></title>
 </head>
 <?php
-echo '<body onload="timer()">';
+echo '<body onload="minuteur()">';
 ?>
 
 <?php

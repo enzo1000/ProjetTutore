@@ -10,12 +10,14 @@
     <div id="titre">CréAnimals</div>
     <div class="boxe_timer">
         <div id="horloge">...</div>
+        <?php
+        echo '<input type="hidden" id="last-date" name="last-date" value= "' . $_SESSION['joueur']['tirage'] .'">';
+
+        ?>
+
         <button id="tirage"><a href="index.php?controller=creature&action=getRandom"> On peut tirer</a></button>
 
-        <!-- <script type="text/javascript">
-            function timer() {
-                script
-                timer();
-        </script> -->
+
     </div>
+
 </header>

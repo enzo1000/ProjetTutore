@@ -15,7 +15,8 @@ class ControllerJoueur{
         $m=$_SESSION['joueur']["mail"];
         $mdp=$_SESSION['joueur']["mdp"];
         $pseudo=$_SESSION['joueur']["pseudo"];
-        $joueur=new ModelJoueur($m, $pseudo, $mdp);
+        $tirage=$_SESSION['joueur']['tirage'];
+        $joueur=new ModelJoueur($m, $pseudo, $mdp,$tirage);
         return $joueur;
     }
 
