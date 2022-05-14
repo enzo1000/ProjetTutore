@@ -8,8 +8,8 @@
             </div>  
     </div>
    </div> -->
-    <div id="collection"?>>
-        <a href="index.php?controller=joueur&action=readAllCreatures" class="ouvrir" aria-hidden="true" onclick="afficherInventaire()">Inventaire</a>
+    <div id="collection"?>
+        <a href="index.php?controller=joueur&action=readAllCreatures" id="bouttonInventaire" class="ouvrir" aria-hidden="true" onclick="afficherInventaire()">Inventaire</a>
     </div>
 
     <div id="infoCreature">

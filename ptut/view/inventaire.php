@@ -1,23 +1,29 @@
 
 <main>
     <div id='volet'>
-        <div id='a'>
+        <div id='creature' >
 <?php
-            foreach($tab_c as $IDcreature){
-            $dir_img = "view/images/";
-            echo "
-            <div class='inventaire_creature'>
+foreach($tab_c as $IDcreature){
+    $dir_img = "view/images/";
 
-                <p style='color:". $IDcreature->getCouleur()."'>". $IDcreature->getNom()."</p>
+
+            echo "<div class='boxCreature'>
+<p style='color:". $IDcreature->getCouleur()."'>". $IDcreature->getNom()."</p>
+            <a href='index.php?controller=creature&action=info&attribut={$IDcreature->getIDCreature()}'  class='inventaire_creature'>
+
+                
                 <img src=" . $dir_img . "tetes/" . $IDcreature->getIDTete() . ".png " . " class='tete'/>
                 <img src=" . $dir_img . "corps/" . $IDcreature->getIdCorps() . ".png " . " class='corps'/>
                 <img src=" . $dir_img . "jambes/" . $IDcreature->getIdJambe() . ".png " . " class='jambes'/>
                 
+            
+            </a>
+            
+            <a href='index.php?controller=creature&action=supprimer&attribut={$IDcreature->getIDCreature()}'  class='supprimerCreature' ></a>
             </div>
-            <div>
-                <a href='index.php?controller=creature&action=supprimer&attribut={$IDcreature->getIDCreature()}'>supp</a>
-                <a href='index.php?controller=creature&action=info&attribut={$IDcreature->getIDCreature()}'>info</a>
-            </div>";
+            
+                
+            ";
             }
 ?>
         </div>

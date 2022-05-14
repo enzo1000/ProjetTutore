@@ -6,6 +6,33 @@ $(document).ready(function () {
 
 
 });
+document.addEventListener(
+    "click",
+    function(event) {
+        // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
+        if (
+            event.target.matches(".button-close-modal") ||
+            !event.target.closest(".modal")
+        ) {
+
+            closeModal()
+
+        }
+    },
+    false
+)
+
+function closeModal() {
+
+
+    document.getElementById('timer').style.cursor = 'auto';
+    document.getElementById('timer').style.pointerEvents = 'auto';
+    document.getElementById('bouttonInventaire').style.cursor = 'auto';
+    document.getElementById('bouttonInventaire').style.pointerEvents = 'auto';
+
+    document.location.href="http://localhost/ptut/ProjetTutore/ptut/index.php?controller=ICD&action=connexion";
+}
+
 
 function timer() {
     document.getElementById("horloge").style.display = 'contents';
@@ -30,7 +57,7 @@ function timer() {
 function minuteur() {
 
     document.getElementById("horloge").style.display = 'contents';
-    document.getElementById("tirage").style.display = 'none';
+    document.getElementById("boutton_tirage").style.display = 'none';
     console.log(document.getElementById("last-date"));
     var dernierTirage = Date.parse(document.getElementById("last-date").value);
     console.info(dernierTirage);
@@ -46,16 +73,18 @@ function minuteur() {
 
     document.getElementById('horloge').innerText = tempsRestant.getHours() + ":" + tempsRestant.getMinutes() + ":" + tempsRestant.getSeconds();
 // TODO 3600*1000*24
-    if (temps >= 3600 * 1000) {
+    if (temps >= 10000  ) {
         var monEvent = document.getElementById("horloge");
         monEvent.style.display = 'none';
-        document.getElementById("tirage").style.display = 'contents';
+        document.getElementById("boutton_tirage").style.display = 'contents';
     } else {
-        setTimeout("minuteur()", 1000);
+        setTimeout("minuteur()", 100);
     }
 
 
 }
+
+
 
 
 // function displayBlock(){

@@ -1,6 +1,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="view/js/jquery.js"></script>
     <script src="view/js/accueil.js"></script>
     <link rel="stylesheet" href="view/CSS/index.css">

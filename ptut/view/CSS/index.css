@@ -48,6 +48,17 @@ header {
     align-items: center;
 }
 
+.boxe_boutton{
+    background-color: skyblue;
+    border-radius: 1em;
+    width: 25%;
+    margin: 2%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* css du main */
 main{
     display: flex;
@@ -109,12 +120,11 @@ main{
 .modal {
     position: absolute;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
     display: table-cell;
     vertical-align: middle;
     background-color: rosybrown;
     width: 40%;
+    height: 80%;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -134,20 +144,18 @@ main{
 }
 
 /* Bouton servant à fermer la fenêtre modale */
-.closebtn {
-    text-decoration: none;
-    float: right;
-    font-size: 35px;
+
+
+.button-close-modal {
+    display: block;
+    font-size: 2rem;
     font-weight: bold;
-    color: #fff;
+    margin-left: auto;
+    color: white;
+    background-color: transparent;
+    border: none;
 }
 
-.closebtn:hover,
-.closebtn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 /* affichage de créature */
 .creature {
@@ -158,6 +166,8 @@ main{
     align-content: center;
     margin-right: auto;
     margin-left:auto;
+
+
 }
 #a{
     display: flex;
@@ -168,18 +178,22 @@ main{
     overflow-x: hidden;
     height: inherit;
     width: 90%;
+
 }
 #volet .inventaire_creature, #jardin .inventaire_creature {
     display: flex;
     flex-direction: column;
-    width:15%;
-    height: 320px;
     /* flex-wrap: wrap; */
     align-content: center;
-    margin-right: 2%;
-    margin-left:2%;
+    width: 80%;
+
+    margin-right: 1%;
+    margin-left:1%;
+    margin-top: 2%;
     font-size: 0.9em;
     text-align: center;
+
+
 }
 #infoCreature .inventaire_creature {
     display: flex;
@@ -190,9 +204,13 @@ main{
     margin-left:2%;
     font-size: 1em;
     text-align: center;
+
+
 }
 .inventaire_creature ~ div{ display: flex;
-flex-direction: column;}
+flex-direction: column;
+
+    }
 #infoCreature{background-color: rosybrown;}
 
 .tete{
@@ -219,6 +237,8 @@ flex-direction: column;}
     display: flex;
     width: 5%;
     height: var(--hauteur-ligne);
+
+
 }
 #volet {
     height: var(--hauteur-ligne);
@@ -231,6 +251,72 @@ flex-direction: column;}
     color: #fff;	
     -webkit-transition: all .5s ease-in;
 	transition: all .5s ease-in;
+
+
+}
+
+#creature{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: inherit;
+    width: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 1.1vw;
+
+
+}
+
+.boxCreature{
+    /* flex-wrap: wrap; */
+
+
+    margin-top: 2%;
+    width:20%;
+    align-content: center;
+    margin-right: 2%;
+    margin-left:2%;
+    font-size: 1em;
+    text-align: center;
+
+    display: flex;
+
+
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    border: solid;
+
+}
+
+.boxCreature p{
+    white-space: nowrap;
+    width:80%;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+
+
+
+#volet .supprimerCreature{
+    border-radius: 100px;
+    margin: 10px 10px;
+    width: 2vw;
+    height: 2vw;
+    background-size: 2vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    right: 0;
+
+    background-color: red;
+    background-image: url("../images/poubelle.png");
 }
 
 /* #volet a.fermer {display: none;} */
@@ -255,3 +341,28 @@ a.ouvrir, a.fermer {
 a.ouvrir {align-self: center;}
 a.fermer {
 align-self: center;}
+
+
+
+@media only screen and (max-width: 600px) {
+    body{
+        background-color: red;
+    }
+
+    a.ouvrir{
+        height: 10%;
+        left: 0;
+    }
+
+    #infoCreature {
+        width: 80%;
+        margin: 2%;
+    }
+
+    .inventaire_creature{
+        display: flex;
+    }
+
+
+
+}
