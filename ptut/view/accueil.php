@@ -14,6 +14,14 @@
 
     <div id="infoCreature">
         <p style="text-align: center">INFORMATIONS</p>
+        <?php
+            if(isset($_SESSION['infoJoueur'])){
+                echo "{$_SESSION['infoJoueur']}";
+            }
+            else if(!isset($_SESSION['jardin']) || sizeof($_SESSION['jardin'])==0){
+                echo "Bonjour {$_SESSION['pseudo']}";
+            }
+        ?>
     </div>
     <div id="jardin">  
         <div class="bouton">
@@ -41,4 +49,10 @@
         </div>
     </div>
 </main>
+
+<?php 
+    if(isset($_SESSION['random'])){
+        echo $_SESSION['random'];
+    }
+?>
 

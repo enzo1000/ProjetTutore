@@ -11,12 +11,14 @@ class ControllerCreature
         header("Location:./index.php?controller=creature&action=getRandom");
     }
 
+    public static function supprime_RandomSession(){
+        ModelCreature::supprime_RandomSession();
+        header("Location:index.php?controller=ICD&action=connexion");
+    }
+
 
     public static function getRandom()
     {
-        require_once File::build_path(array("view", "header.php"));
-        require_once File::build_path(array("view", "accueil.php"));
-
 
         echo "<script>
         
@@ -26,19 +28,11 @@ class ControllerCreature
         document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
         </script>";
 
-        echo "
-
-<div class='modal'>
-     <div class='modal-header'>
-         <button class='button-close-modal'>X</button>
-         <h2>Random créature</h2>
-    </div>
-
-    <div class='modal-content'>";
-        ModelCreature::random();
-
-
-        echo "</div></div>";
+        
+        /*require_once File::build_path(array("view", "header.php"));
+        require_once File::build_path(array("view", "accueil.php"));*/
+        $_SESSION['random']=ModelCreature::random();
+        header("Location:index.php?controller=ICD&action=connexion");
     }
 
 
@@ -54,32 +48,22 @@ class ControllerCreature
         require_once File::build_path(array("view", "header.php"));
         $tab = ModelCreature::info($_GET['attribut']);
         $_SESSION['infoCreature'] = $tab;
-        echo "<pre>";
-        var_dump($_SESSION['infoCreature']);
         header("Location:index.php?controller=joueur&action=readAllCreatures");
     }
 
     public static function ajoutJardin()
     {
         require_once File::build_path(array("view", "header.php"));
-        $tab = ModelCreature::info($_GET['attribut'])[0];
-        $dir_img = "view/images/";
-        $crea = "<div class='inventaire_creature'>
-        <img src='{$dir_img}tetes/{$tab['IDTete']}.png' class='tete' />
-        <img src='{$dir_img}corps/{$tab['IDCorps']}.png' class='corps'/>
-        <img src='{$dir_img}jambes/{$tab['IDJambe']}.png' class='jambes'/>
-        </div>";
-        if (!isset($_SESSION['jardin'])) {
-            $_SESSION['jardin'] = array(
-                "{$tab['IDCreature']}" => $crea
-            );
-        } else {
-            $_SESSION['jardin']["{$tab['IDTete']}"] = $crea;
-        }
+        ModelCreature::ajoutJardin($_GET['attribut']);
         header("Location:index.php?controller=joueur&action=readAllCreatures");
     }
 
-
+    public static function modNom($id){
+        require_once File::build_path(array("view","header.php"));
+        ModelCreature::modNom($id,$_POST['nom']);
+        $_SESSION['infoCreature'][0]['nom']=$_POST['nom'];
+        header("Location:index.php?controller=joueur&action=readAllCreatures");
+    }
 }
 
 ?>

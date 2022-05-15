@@ -34,8 +34,8 @@ class ControllerICD{
         $reponse = $requete->fetchAll();
        
         if ($reponse == false) {
-            echo "mdp ou mail incorrect";
             self::formConnexion();
+            echo "mdp ou mail incorrect";
             echo "<a href='index.php?controller=ICD&action=formInscription'> pas de compte ? créer un compte mtn</a>";
         } else {
             // echo "<pre>";
@@ -48,14 +48,6 @@ class ControllerICD{
             //var_dump($_SESSION['mail']);
             require_once File::build_path(array("view","header.php"));
             require_once File::build_path(array("view","accueil.php"));
-            // header("Location:view/accueil.php");
-    
-            /*
-            $sql = "SELECT mail FROM admin WHERE mail='{$_POST['mail']}'";
-            $requete=$conn->query($sql);
-            if($reponse!=false){
-                echo "<a href='admin.php'> gérer les créatures </a>";
-            }*/
         }
     }
     catch(PDOException $e) {

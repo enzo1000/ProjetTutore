@@ -1,18 +1,41 @@
 $(document).ready(function () {
-    $("#joueur").click(function () {
-        // Append a new empty row with two buttons in the end
-        $("#joueur").append(`coucou`);
-    });
 
+    let nom=document.getElementById("nom").textContent;
+    let id=document.getElementById("IDCreature").textContent;
+    $("#nom").click(function(){
+        $("div").remove("#nom");
+        $("#IDCreature").before("<form method='POST' action='index.php?controller=creature&action=modNom&attribut="+id+"'> <input id='modNom' name='nom' type=text value='"+nom+"'> <input type='submit' value='Confirmer'></form>");
+        //$("#IDCreature").before("<a id='confirmer href='index.php?controller=creature&action=modNom&attribut="+id+"&attribut2="+$("#modNom").val()+"'>Confirmer</a>");
+    })
+    var actif = 0;
+    $("#infoCreature").click(function(){
+        if(document.getElementById("#modNom")){
+            location.reload();
+        }
+      })
 
 });
+
+function modNom(){
+    let nom=document.getElementById("nom");
+    removeChild(nom);
+}
+
+
+function random(){
+    document.getElementById('timer').style.cursor = 'default';
+    document.getElementById('timer').style.pointerEvents = 'none';
+    document.getElementById('bouttonInventaire').style.cursor = 'default';
+    document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
+}
+
 document.addEventListener(
     "click",
     function(event) {
         // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
         if (
             event.target.matches(".button-close-modal") ||
-            !event.target.closest(".modal")
+            (!event.target.closest(".modal")&&getElementById("modal"))
         ) {
 
             closeModal()
@@ -24,13 +47,12 @@ document.addEventListener(
 
 function closeModal() {
 
-
     document.getElementById('timer').style.cursor = 'auto';
     document.getElementById('timer').style.pointerEvents = 'auto';
     document.getElementById('bouttonInventaire').style.cursor = 'auto';
     document.getElementById('bouttonInventaire').style.pointerEvents = 'auto';
 
-    document.location.href="http://localhost/ptut/ProjetTutore/ptut/index.php?controller=ICD&action=connexion";
+    document.location.href="index.php?controller=ICD&action=connexion";
 }
 
 
@@ -84,19 +106,6 @@ function minuteur() {
 
 }
 
-
-
-
-// function displayBlock(){
-
-//     document.getElementById("modal").style.display = 'block';
-//     // document.getElementById("volet").style.display ='none';
-// };
-// function displayNone(){
-//     document.getElementById("modal").style.display = 'none';
-//     document.getElementById("volet").style.display ='block';
-// }
-
 function changerFontImage() {
     document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/ocean.jpg)";
 }
@@ -104,16 +113,4 @@ function changerFontImage() {
 function changerFontImage2() {
     document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/herbe.jpg)";
 }
-
-// function afficherInventaire(){
-//     // document.getElementById("d").innerHTML='he';
-//     document.getElementById('jardin').style.display='none';
-//     document.getElementById('volet').removeAttribute("style");
-// }
-// function fermerInventaire(){
-//     // document.getElementById("d").innerHTML='he';
-//     document.getElementById('jardin').style.display='block';
-//     document.getElementById('jardin').style.display='flex';
-//     document.getElementById('volet').setAttribute("left", "-100%");
-// }
 

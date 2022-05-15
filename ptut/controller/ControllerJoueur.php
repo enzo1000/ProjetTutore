@@ -22,7 +22,6 @@ class ControllerJoueur
         return $joueur;
     }
 
-
     public static function readAllCreatures()
     {
         require_once File::build_path(array("view", "header.php"));
@@ -32,8 +31,19 @@ class ControllerJoueur
         //echo "<pre>";
         //var_dump($tab_c);
         require_once File::build_path(array("view", "inventaire.php"));
+    }
 
-        // require_once File::build_path(array("view","accueil.php"));
+    public static function tri()
+    {
+        require_once File::build_path(array("view", "header.php"));
+        $tab_c = ModelJoueur::tri($_POST['couleur']);
+        require_once File::build_path(array("view", "inventaire.php"));
+    }
+
+    public static function joueurInfo(){
+        require_once File::build_path(array("view", "header.php"));
+        $_SESSION['infoJoueur']=ModelJoueur::afficherInfoJoueur();
+        header("Location:index.php?controller=ICD&action=connexion");
     }
 }
 

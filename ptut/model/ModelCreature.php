@@ -62,6 +62,10 @@ class ModelCreature
         unset($_SESSION['creature']);
 
     }
+    
+    public static function supprime_RandomSession(){
+        unset($_SESSION['random']);
+    }
 
     public static function supprimer($id)
     {
@@ -76,6 +80,23 @@ class ModelCreature
         $rep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rep->fetchAll();
         return $tab;
+    }
+
+    public static function ajoutJardin($id){
+        $tab = self::info($id)[0];
+        $dir_img = "view/images/";
+        $crea = "<div class='inventaire_creature'>
+        <img src='{$dir_img}tetes/{$tab['IDTete']}.png' class='tete' />
+        <img src='{$dir_img}corps/{$tab['IDCorps']}.png' class='corps'/>
+        <img src='{$dir_img}jambes/{$tab['IDJambe']}.png' class='jambes'/>
+        </div>";
+        if (!isset($_SESSION['jardin'])) {
+            $_SESSION['jardin'] = array(
+                "{$tab['IDCreature']}" => $crea
+            );
+        } else {
+            $_SESSION['jardin']["{$tab['IDTete']}"] = $crea;
+        }
     }
 
     public static function random()
@@ -128,11 +149,20 @@ class ModelCreature
         }
 
         $dir_img = "view/images/";
-        echo "<div class='creature'>
-        <p style='color: {$_SESSION['creature']['couleur']};'>{$_SESSION['creature']['nom']}</p>
-        <img src='{$dir_img}tetes/{$_SESSION['creature']['tete']}.png' class='tete' />
-        <img src='{$dir_img}corps/{$_SESSION['creature']['corps']}.png' class='corps'/>
-        <img src='{$dir_img}jambes/{$_SESSION['creature']['jambes']}.png' class='jambes'/>
+        return "
+        <div class='modal' id='modal'>
+        <div class='modal-header'>
+            <button class='button-close-modal'><a href='index.php?controller=creature&action=supprime_RandomSession'>X</a></button>
+            <h2>Random créature</h2>
+        </div>
+            <div class='modal-content'>
+                <div class='creature'>
+                <p style='color: {$_SESSION['creature']['couleur']};'>{$_SESSION['creature']['nom']}</p>
+                <img src='{$dir_img}tetes/{$_SESSION['creature']['tete']}.png' class='tete' />
+                <img src='{$dir_img}corps/{$_SESSION['creature']['corps']}.png' class='corps'/>
+                <img src='{$dir_img}jambes/{$_SESSION['creature']['jambes']}.png' class='jambes'/>
+                </div>
+            </div>
         </div>";
 
     }
@@ -156,6 +186,11 @@ class ModelCreature
         $pdo->query("INSERT INTO creature VALUES('{$_SESSION['mail']}','Crea{$nbCreature}','$nomCreature', '$couleur',$pv,$tete,$corps,$jambe)");
         $pdo->query("UPDATE joueur SET tirage=CURRENT_TIMESTAMP WHERE mail = '" . $_SESSION['mail'] . "'");
         return $nomCreature;
+    }
+
+    public static function modNom($id,$nom){
+        $pdo = Model::getPDO();
+        $rep = $pdo->query("UPDATE creature SET nom='$nom' WHERE mail='{$_SESSION['mail']}' AND idCreature='$id'");
     }
 }
 
