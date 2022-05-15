@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
-    let nom=document.getElementById("nom").textContent;
-    let id=document.getElementById("IDCreature").textContent;
+
     $("#nom").click(function(){
+        let nom=document.getElementById("nom").textContent;
+        let id=document.getElementById("IDCreature").textContent;
         $("div").remove("#nom");
         $("#IDCreature").before("<form method='POST' action='index.php?controller=creature&action=modNom&attribut="+id+"'> <input id='modNom' name='nom' type=text value='"+nom+"'> <input type='submit' value='Confirmer'></form>");
         //$("#IDCreature").before("<a id='confirmer href='index.php?controller=creature&action=modNom&attribut="+id+"&attribut2="+$("#modNom").val()+"'>Confirmer</a>");
@@ -13,6 +14,21 @@ $(document).ready(function () {
             location.reload();
         }
       })
+
+    document.addEventListener(
+        "click",
+        function(event) {
+            // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
+            if (
+                event.target.matches(".button-close-modal")
+            ) {
+
+                closeModal();
+
+            }
+        },
+        false
+    )
 
 });
 
@@ -29,26 +45,10 @@ function modNom(){
 //     document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
 // }
 
-document.addEventListener(
-    "click",
-    function(event) {
-        // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
-        if (
-            event.target.matches(".button-close-modal") ||
-            (!event.target.closest(".modal")&&getElementById("modal"))
-        ) {
 
-            closeModal()
-
-        }
-    },
-    false
-)
 
 function closeModal() {
 
-    document.getElementById('timer').style.cursor = 'auto';
-    document.getElementById('timer').style.pointerEvents = 'auto';
     document.getElementById('bouttonInventaire').style.cursor = 'auto';
     document.getElementById('bouttonInventaire').style.pointerEvents = 'auto';
 

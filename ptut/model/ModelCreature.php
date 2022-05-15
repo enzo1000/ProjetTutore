@@ -57,13 +57,15 @@ class ModelCreature
 
     }
 
-    public static function supprimeCreatureSession(){
+    public static function supprimeCreatureSession()
+    {
 
         unset($_SESSION['creature']);
 
     }
-    
-    public static function supprime_RandomSession(){
+
+    public static function supprime_RandomSession()
+    {
         unset($_SESSION['random']);
     }
 
@@ -82,9 +84,20 @@ class ModelCreature
         return $tab;
     }
 
-    public static function ajoutJardin($id){
+    public static function ajoutJardin($id)
+    {
+        /* Ajout bdd*/
+        $pdo = Model::getPDO();
+        $rep = $pdo->query("UPDATE creature set idEnclos = 1 WHERE IDCreature='$id'");
+    }
+
+    public static function afficherJardin()
+    {
+
         $tab = self::info($id)[0];
         $dir_img = "view/images/";
+
+
         $crea = "<div class='inventaire_creature'>
         <img src='{$dir_img}tetes/{$tab['IDTete']}.png' class='tete' />
         <img src='{$dir_img}corps/{$tab['IDCorps']}.png' class='corps'/>
@@ -137,20 +150,24 @@ class ModelCreature
             //random PV
             $pv = rand(10, 200);
 
-            $_SESSION['creature']['tete']=$randTete;
-            $_SESSION['creature']['corps']=$randCorps;
-            $_SESSION['creature']['jambes']=$randJambe;
-            $_SESSION['creature']['couleur']=$randCouleur;
+            $_SESSION['creature']['tete'] = $randTete;
+            $_SESSION['creature']['corps'] = $randCorps;
+            $_SESSION['creature']['jambes'] = $randJambe;
+            $_SESSION['creature']['couleur'] = $randCouleur;
+
+            $_SESSION['creature']['pv'] = $pv;
 
 
-            $nomCreature = self::ajouteCreature($randTete, $randCorps, $randJambe, $randCouleur, $pv);
+            self::ajouteCreature($randTete, $randCorps, $randJambe, $randCouleur, $pv);
 
-            $_SESSION['creature']['nom']=$nomCreature;
+
+
+
         }
 
         $dir_img = "view/images/";
         return "
-        <div class='modal' id='modal'>
+        <div class='modal' id='modal' >
         <div class='modal-header'>
             <button class='button-close-modal'><a href='index.php?controller=creature&action=supprime_RandomSession'>X</a></button>
             <h2>Random créature</h2>
@@ -163,7 +180,10 @@ class ModelCreature
                 <img src='{$dir_img}jambes/{$_SESSION['creature']['jambes']}.png' class='jambes'/>
                 </div>
             </div>
-        </div>";
+        </div>
+        <script>document.getElementById('bouttonInventaire').style.cursor = 'default';
+        document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
+        </script>";
 
     }
 
@@ -182,16 +202,32 @@ class ModelCreature
         $nomJambe = $pdo->query("SELECT nomJambe FROM jambe WHERE idJambe=$jambe");
         $nomJambe = $nomJambe->fetch(PDO::FETCH_ASSOC);
         $nomJambe = $nomJambe["nomJambe"];
-        $nomCreature = "{$nomTete}{$nomCorps}{$nomJambe}";
-        $pdo->query("INSERT INTO creature VALUES('{$_SESSION['mail']}','Crea{$nbCreature}','$nomCreature', '$couleur',$pv,$tete,$corps,$jambe)");
+        $_SESSION['creature']['nom'] = "{$nomTete}{$nomCorps}{$nomJambe}";
+
+
+
+
+        $pdo->query("INSERT INTO creature (mail, IDCreature, nom, couleur, PV, IDTete, IDCorps, IDJambe) VALUES(
+                            '{$_SESSION['mail']}',
+                            'Crea{$nbCreature}',
+                            '{$_SESSION['creature']['nom']}',
+                            '{$_SESSION['creature']['couleur']}',
+                            '{$_SESSION['creature']['pv']}',
+                            '{$_SESSION['creature']['tete']}',
+                            '{$_SESSION['creature']['corps']}',
+                            '{$_SESSION['creature']['jambes']}')");
+
+        var_dump("cocuou2" . $_SESSION['creature']);
         $pdo->query("UPDATE joueur SET tirage=CURRENT_TIMESTAMP WHERE mail = '" . $_SESSION['mail'] . "'");
-        return $nomCreature;
+
     }
 
-    public static function modNom($id,$nom){
+    public static function modNom($id, $nom)
+    {
         $pdo = Model::getPDO();
         $rep = $pdo->query("UPDATE creature SET nom='$nom' WHERE mail='{$_SESSION['mail']}' AND idCreature='$id'");
     }
 }
+
 
 ?>

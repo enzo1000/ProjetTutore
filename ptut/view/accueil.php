@@ -1,5 +1,5 @@
 <?php $_SESSION["inventaire"]="ferme";?>
-<main >
+<main id="test">
   <!-- <div id="collection">
     <div id="inventaire">
             <div id="volet" style="left: -100%;" href="index.php?controller=joueur&action=readAllCreatures" >

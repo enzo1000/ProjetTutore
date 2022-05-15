@@ -18,7 +18,9 @@ echo '<body onload="minuteur()">';
 
 <?php
   session_start();
-  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
   require_once 'lib/File.php';
   //require_once File::build_path(array("view","head.php"));
   require_once File::build_path(array("controller","routeur.php"));
