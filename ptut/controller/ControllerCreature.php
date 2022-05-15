@@ -19,14 +19,14 @@ class ControllerCreature
 
     public static function getRandom()
     {
-
+/*s
         echo "<script>
         
         document.getElementById('timer').style.cursor = 'default';
         document.getElementById('timer').style.pointerEvents = 'none';
         document.getElementById('bouttonInventaire').style.cursor = 'default';
         document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
-        </script>";
+        </script>";*/
 
         
         /*require_once File::build_path(array("view", "header.php"));

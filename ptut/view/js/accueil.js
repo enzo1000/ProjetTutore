@@ -22,12 +22,12 @@ function modNom(){
 }
 
 
-function random(){
-    document.getElementById('timer').style.cursor = 'default';
-    document.getElementById('timer').style.pointerEvents = 'none';
-    document.getElementById('bouttonInventaire').style.cursor = 'default';
-    document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
-}
+// function random(){
+//     document.getElementById('timer').style.cursor = 'default';
+//     document.getElementById('timer').style.pointerEvents = 'none';
+//     document.getElementById('bouttonInventaire').style.cursor = 'default';
+//     document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
+// }
 
 document.addEventListener(
     "click",
