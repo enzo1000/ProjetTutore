@@ -46,6 +46,13 @@ class ControllerCreature
         header("Location:index.php?controller=joueur&action=readAllCreatures");
     }
 
+    public static function supJardin()
+    {
+        require_once File::build_path(array("view", "header.php"));
+        ModelCreature::supJardin($_GET['attribut']);
+        header("Location:index.php?controller=ICD&action=connexion&enclos={$_GET['enclos']}");
+    }
+
     public static function modNom($id){
         require_once File::build_path(array("view","header.php"));
         ModelCreature::modNom($id,$_POST['nom']);

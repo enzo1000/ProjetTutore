@@ -108,6 +108,7 @@ class ModelCreature
                     $randCorps = rand(1, $nb);
                 } while ($randCorps == $randTete);
             }
+
             //random jambe selon la rareté
             $randJambe = rand(1, 100);
             if ($randJambe <= 30) {
@@ -145,10 +146,10 @@ class ModelCreature
                 </div>
             </div>
         </div>
-        <script>document.getElementById('bouttonInventaire').style.cursor = 'default';
-        document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
+        <script>
+            document.getElementById('bouttonInventaire').style.cursor = 'default';
+            document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
         </script>";
-
     }
 
     public static function ajouteCreature($tete, $corps, $jambe, $couleur, $pv)
@@ -159,15 +160,19 @@ class ModelCreature
         $nomTete = $pdo->query("SELECT nomTete FROM tete WHERE idTete=$tete");
         $nomTete = $nomTete->fetch(PDO::FETCH_ASSOC);
         $nomTete = $nomTete["nomTete"];
+
         $nomCorps = $pdo->query("SELECT nomCorps FROM corps WHERE idCorps=$corps");
         $nomCorps = $nomCorps->fetch(PDO::FETCH_ASSOC);
         $nomCorps = $nomCorps["nomCorps"];
+
         $nomJambe = $pdo->query("SELECT nomJambe FROM jambe WHERE idJambe=$jambe");
         $nomJambe = $nomJambe->fetch(PDO::FETCH_ASSOC);
         $nomJambe = $nomJambe["nomJambe"];
+
         $_SESSION['creature']['nom'] = "{$nomTete}{$nomCorps}{$nomJambe}";
 
-        $pdo->query("INSERT INTO creature (mail, IDCreature, nom, couleur, PV, IDTete, IDCorps, IDJambe) VALUES(
+        $pdo->query("INSERT INTO creature 
+        (mail, IDCreature, nom, couleur, PV, IDTete, IDCorps, IDJambe) VALUES(
                             '{$_SESSION['mail']}',
                             '{$id}',
                             '{$_SESSION['creature']['nom']}',
@@ -177,7 +182,6 @@ class ModelCreature
                             '{$_SESSION['creature']['corps']}',
                             '{$_SESSION['creature']['jambes']}')");
         $pdo->query("UPDATE joueur SET tirage=CURRENT_TIMESTAMP WHERE mail = '" . $_SESSION['mail'] . "'");
-
     }
 
     public static function genererID(){
@@ -222,10 +226,12 @@ class ModelCreature
                 for($i=0;$i<sizeof($tab);$i++){
                     $crea = "<div class='boxCreature'>
                     <a class='inventaire_creature'>
-                    <img src='{$dir_img}tetes/{$tab[$i]['IDTete']}.png' class='tete' />
-                    <img src='{$dir_img}corps/{$tab[$i]['IDCorps']}.png' class='corps'/>
-                    <img src='{$dir_img}jambes/{$tab[$i]['IDJambe']}.png' class='jambes'/>
+                        <img src='{$dir_img}tetes/{$tab[$i]['IDTete']}.png' class='tete' />
+                        <img src='{$dir_img}corps/{$tab[$i]['IDCorps']}.png' class='corps'/>
+                        <img src='{$dir_img}jambes/{$tab[$i]['IDJambe']}.png' class='jambes'/>
                     </a>
+                    <a href='index.php?controller=creature&action=supJardin&attribut={$tab[$i]['IDCreature']}&enclos=$idEnclos'>
+                        <div class='supprimerCreature'> enlever</div></a>
                     </div>";
                     $_SESSION['jardin']["{$tab[$i]['IDCreature']}"] = $crea;
                 }
@@ -238,10 +244,18 @@ class ModelCreature
         /* Ajout bdd*/
         $pdo = Model::getPDO();
         $rep=$pdo->query("SELECT COUNT(*) FROM creature WHERE mail ='{$_SESSION['mail']}'AND idEnclos = '$idEnclos'");
-        $rep->fetchAll(PDO::FETCH_NUM);
-        if($rep[0]<4){
+        $nb=$rep->fetchAll(PDO::FETCH_NUM);
+        if($nb[0][0]<4){
             $pdo->query("UPDATE creature set idEnclos = '$idEnclos' WHERE mail ='{$_SESSION['mail']}'AND IDCreature='$id'");
         }
+    }
+
+    public static function supJardin($id)
+    {
+        /* Ajout bdd*/
+        $pdo = Model::getPDO();
+        $pdo->query("UPDATE creature set idEnclos = 0 WHERE mail ='{$_SESSION['mail']}'AND IDCreature='$id'");
+    
     }
 
 }
