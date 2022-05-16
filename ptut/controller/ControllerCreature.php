@@ -19,18 +19,6 @@ class ControllerCreature
 
     public static function getRandom()
     {
-/*s
-        echo "<script>
-        
-        document.getElementById('timer').style.cursor = 'default';
-        document.getElementById('timer').style.pointerEvents = 'none';
-        document.getElementById('bouttonInventaire').style.cursor = 'default';
-        document.getElementById('bouttonInventaire').style.pointerEvents = 'none';
-        </script>";*/
-
-        
-        /*require_once File::build_path(array("view", "header.php"));
-        require_once File::build_path(array("view", "accueil.php"));*/
         $_SESSION['random']=ModelCreature::random();
         header("Location:index.php?controller=ICD&action=connexion");
     }
@@ -54,7 +42,7 @@ class ControllerCreature
     public static function ajoutJardin()
     {
         require_once File::build_path(array("view", "header.php"));
-        ModelCreature::ajoutJardin($_GET['attribut']);
+        ModelCreature::ajoutJardin($_GET['attribut'],$_GET['enclos']);
         header("Location:index.php?controller=joueur&action=readAllCreatures");
     }
 

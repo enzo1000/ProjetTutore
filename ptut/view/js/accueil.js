@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     $("#nom").click(function(){
         let nom=document.getElementById("nom").textContent;
         let id=document.getElementById("IDCreature").textContent;
@@ -8,23 +7,34 @@ $(document).ready(function () {
         $("#IDCreature").before("<form method='POST' action='index.php?controller=creature&action=modNom&attribut="+id+"'> <input id='modNom' name='nom' type=text value='"+nom+"'> <input type='submit' value='Confirmer'></form>");
         //$("#IDCreature").before("<a id='confirmer href='index.php?controller=creature&action=modNom&attribut="+id+"&attribut2="+$("#modNom").val()+"'>Confirmer</a>");
     })
-    var actif = 0;
+  /*
     $("#infoCreature").click(function(){
         if(document.getElementById("#modNom")){
             location.reload();
+            $("#IDCreature").before("<form method='POST' action='index.php?controller=creature&action=modNom&attribut="+id+"'> <input id='modNom' name='nom' type=text value='"+nom+"'> <input type='submit' value='Confirmer'></form>");
         }
-      })
+    })*/
 
-    document.addEventListener(
+    $("#ajoutJardin").click(function(){
+        let id=document.getElementById("IDCreature").textContent;
+        $("div").remove("#ajoutJardin");
+        $("#pv").after("<div class='ajoutEnclos'>"+
+                       "<div><a href='index.php?controller=creature&action=ajoutJardin&enclos=1&attribut="+id+"'>enclos1</a></div>"+
+                       "<div><a href='index.php?controller=creature&action=ajoutJardin&enclos=2&attribut="+id+"'><div>enclos2</a></div></div>");
+
+    })
+
+      document.addEventListener(
         "click",
         function(event) {
             // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
             if (
-                event.target.matches(".button-close-modal")
+                event.target.matches(".button-close-modal") ||
+                (!event.target.matches(".button-close-modal") && getElementById("modal"))
             ) {
-
-                closeModal();
-
+    
+                closeModal()
+    
             }
         },
         false
@@ -49,6 +59,8 @@ function modNom(){
 
 function closeModal() {
 
+    document.getElementById('timer').style.cursor = 'auto';
+    document.getElementById('timer').style.pointerEvents = 'auto';
     document.getElementById('bouttonInventaire').style.cursor = 'auto';
     document.getElementById('bouttonInventaire').style.pointerEvents = 'auto';
 
@@ -106,11 +118,11 @@ function minuteur() {
 
 }
 
-function changerFontImage() {
-    document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/ocean.jpg)";
-}
+// function changerFontImage() {
+//     document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/ocean.jpg)";
+// }
 
-function changerFontImage2() {
-    document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/herbe.jpg)";
-}
+// function changerFontImage2() {
+//     document.getElementById("boites").style.backgroundImage = "url(view/images/jardins/herbe.jpg)";
+// }
 

@@ -84,38 +84,8 @@ class ModelCreature
         return $tab;
     }
 
-    public static function ajoutJardin($id)
-    {
-        /* Ajout bdd*/
-        $pdo = Model::getPDO();
-        $rep = $pdo->query("UPDATE creature set idEnclos = 1 WHERE IDCreature='$id'");
-    }
-
-    public static function afficherJardin()
-    {
-
-        $tab = self::info($id)[0];
-        $dir_img = "view/images/";
-
-
-        $crea = "<div class='inventaire_creature'>
-        <img src='{$dir_img}tetes/{$tab['IDTete']}.png' class='tete' />
-        <img src='{$dir_img}corps/{$tab['IDCorps']}.png' class='corps'/>
-        <img src='{$dir_img}jambes/{$tab['IDJambe']}.png' class='jambes'/>
-        </div>";
-        if (!isset($_SESSION['jardin'])) {
-            $_SESSION['jardin'] = array(
-                "{$tab['IDCreature']}" => $crea
-            );
-        } else {
-            $_SESSION['jardin']["{$tab['IDTete']}"] = $crea;
-        }
-    }
-
     public static function random()
     {
-        //random couleur selon la rareté
-
         if (!isset($_SESSION['creature']['tete'])) {
             $randCouleur = rand(1, 100);
             if ($randCouleur <= 5) $randCouleur = "orange";
@@ -154,20 +124,14 @@ class ModelCreature
             $_SESSION['creature']['corps'] = $randCorps;
             $_SESSION['creature']['jambes'] = $randJambe;
             $_SESSION['creature']['couleur'] = $randCouleur;
-
             $_SESSION['creature']['pv'] = $pv;
 
-
             self::ajouteCreature($randTete, $randCorps, $randJambe, $randCouleur, $pv);
-
-
-
-
         }
 
         $dir_img = "view/images/";
         return "
-        <div class='modal' id='modal' >
+        <div class='modal' id='modal'>
         <div class='modal-header'>
             <button class='button-close-modal'><a href='index.php?controller=creature&action=supprime_RandomSession'>X</a></button>
             <h2>Random créature</h2>
@@ -190,9 +154,8 @@ class ModelCreature
     public static function ajouteCreature($tete, $corps, $jambe, $couleur, $pv)
     {
         $pdo = Model::getPDO();
-        $nbCreature = $pdo->query("SELECT COUNT(*) FROM creature WHERE mail='{$_SESSION['mail']}'");
-        $nbCreature = $nbCreature->fetch(PDO::FETCH_ASSOC);
-        $nbCreature = $nbCreature["COUNT(*)"]++;
+        $id=self::genererID();
+
         $nomTete = $pdo->query("SELECT nomTete FROM tete WHERE idTete=$tete");
         $nomTete = $nomTete->fetch(PDO::FETCH_ASSOC);
         $nomTete = $nomTete["nomTete"];
@@ -204,22 +167,41 @@ class ModelCreature
         $nomJambe = $nomJambe["nomJambe"];
         $_SESSION['creature']['nom'] = "{$nomTete}{$nomCorps}{$nomJambe}";
 
-
-
-
         $pdo->query("INSERT INTO creature (mail, IDCreature, nom, couleur, PV, IDTete, IDCorps, IDJambe) VALUES(
                             '{$_SESSION['mail']}',
-                            'Crea{$nbCreature}',
+                            '{$id}',
                             '{$_SESSION['creature']['nom']}',
                             '{$_SESSION['creature']['couleur']}',
                             '{$_SESSION['creature']['pv']}',
                             '{$_SESSION['creature']['tete']}',
                             '{$_SESSION['creature']['corps']}',
                             '{$_SESSION['creature']['jambes']}')");
-
-        var_dump("cocuou2" . $_SESSION['creature']);
         $pdo->query("UPDATE joueur SET tirage=CURRENT_TIMESTAMP WHERE mail = '" . $_SESSION['mail'] . "'");
 
+    }
+
+    public static function genererID(){
+        $pdo = Model::getPDO();
+        $nbCreature = $pdo->query("SELECT COUNT(*) FROM creature WHERE mail='{$_SESSION['mail']}'");
+        $nbCreature = $nbCreature->fetch(PDO::FETCH_NUM);
+        if($nbCreature[0]==0){
+            return 'Crea1';
+        }else{
+            $pdo->query("CREATE OR REPLACE VIEW IDCreatures AS SELECT IDCreature FROM creature WHERE mail='{$_SESSION['mail']}'");
+            for ($i=1;$i<=$nbCreature[0];$i++){
+                $id = $pdo->query("SELECT * FROM IDCreatures WHERE idCreature='Crea{$i}'");
+                $id=$id->fetch();
+                if($id==false){
+                    $id='Crea'.$i;
+                    break;
+                }
+                if($id==true&&$i==$nbCreature[0]){
+                    $num=$nbCreature[0]+1;
+                    $id='Crea'.$num;
+                }
+            }
+            return $id;
+        }
     }
 
     public static function modNom($id, $nom)
@@ -227,6 +209,41 @@ class ModelCreature
         $pdo = Model::getPDO();
         $rep = $pdo->query("UPDATE creature SET nom='$nom' WHERE mail='{$_SESSION['mail']}' AND idCreature='$id'");
     }
+
+    public static function afficherJardin($idEnclos)
+    {
+        $pdo = Model::getPDO();
+        if(isset($_SESSION['mail'])){
+            $rep = $pdo->query("SELECT * FROM creature WHERE mail ='{$_SESSION['mail']}' AND idEnclos='$idEnclos'");
+            $rep->setFetchMode(PDO::FETCH_ASSOC);
+            $tab = $rep->fetchAll();
+            if($tab!=false){
+                $dir_img = "view/images/";
+                for($i=0;$i<sizeof($tab);$i++){
+                    $crea = "<div class='boxCreature'>
+                    <a class='inventaire_creature'>
+                    <img src='{$dir_img}tetes/{$tab[$i]['IDTete']}.png' class='tete' />
+                    <img src='{$dir_img}corps/{$tab[$i]['IDCorps']}.png' class='corps'/>
+                    <img src='{$dir_img}jambes/{$tab[$i]['IDJambe']}.png' class='jambes'/>
+                    </a>
+                    </div>";
+                    $_SESSION['jardin']["{$tab[$i]['IDCreature']}"] = $crea;
+                }
+            }
+        }
+    }
+
+    public static function ajoutJardin($id,$idEnclos)
+    {
+        /* Ajout bdd*/
+        $pdo = Model::getPDO();
+        $rep=$pdo->query("SELECT COUNT(*) FROM creature WHERE mail ='{$_SESSION['mail']}'AND idEnclos = '$idEnclos'");
+        $rep->fetchAll(PDO::FETCH_NUM);
+        if($rep[0]<4){
+            $pdo->query("UPDATE creature set idEnclos = '$idEnclos' WHERE mail ='{$_SESSION['mail']}'AND IDCreature='$id'");
+        }
+    }
+
 }
 
 

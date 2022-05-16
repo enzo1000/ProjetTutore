@@ -92,7 +92,7 @@ main{
     width: 80%;
     background-color: grey;
     height: var(--hauteur-ligne);
-    background-image:url(../images/jardins/herbe.jpg);
+    
 }
 .bouton{
     flex-direction: column;
@@ -174,7 +174,7 @@ main{
 
 }
 
-#a{
+/* #a{
     display: flex;
     justify-content: space-around;
     flex-direction: row;
@@ -184,9 +184,9 @@ main{
     height: inherit;
     width: 90%;
 
-}
+} */
 
-#volet .inventaire_creature{
+#volet .inventaire_creature, #jardin .inventaire_creature{
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
@@ -198,13 +198,10 @@ main{
     margin-top: 2%;
     font-size: 0.9em;
     text-align: center;
-
-
 }
-#jardin .inventaire_creature {
+/* #jardin .inventaire_creature {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     align-content: center;
     height: 100px;
 
@@ -215,9 +212,7 @@ main{
     margin-top: 2%;
     font-size: 0.9em;
     text-align: center;
-
-
-}
+} */
 #infoCreature .inventaire_creature {
     display: flex;
     flex-direction: column;
@@ -230,8 +225,9 @@ main{
 
 
 }
-.inventaire_creature ~ div{ display: flex;
-flex-direction: column;
+.inventaire_creature { 
+    display: flex;
+    flex-direction: column;
 
     }
 #infoCreature{background-color: rosybrown;}
@@ -275,9 +271,20 @@ flex-direction: column;
     color: #fff;	
     -webkit-transition: all .5s ease-in;
 	transition: all .5s ease-in;
-
-
 }
+#jardin {
+    height: var(--hauteur-ligne);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+	width: 60%;
+    margin-right: 10px;
+	background: #6B9A49; 
+    color: #fff;	
+    -webkit-transition: all .5s ease-in;
+	transition: all .5s ease-in;
+}
+
 
 #creature{
     display: flex;
@@ -316,7 +323,7 @@ flex-direction: column;
 
     border: solid;
     border-radius: 2em;
-
+    
     min-width: 100px;
 }
 
@@ -350,11 +357,6 @@ flex-direction: column;
     background-color: red;
     background-image: url("../images/poubelle.png");
 }
-
-/* #volet a.fermer {display: none;} */
-/* #inventaire:target #volet {left: -100%;}
-#volet:target a.ouvrir {display: none;}
-#volet:target a.fermer {display: block;} */
 
 a.ouvrir, a.fermer {
     padding: 10px 5px;
@@ -401,7 +403,11 @@ align-self: center;}
     .inventaire_creature{
         display: flex;
     }
-
-
-
 }
+
+.ajoutEnclos{
+    display: flex;
+    flex-direction: row;
+}
+.ajoutEnclos div{margin: 3%;}
+

@@ -1,4 +1,6 @@
-<?php $_SESSION["inventaire"]="ferme";?>
+
+<?php $_SESSION["inventaire"]="ferme";
+?>
 <main id="test">
   <!-- <div id="collection">
     <div id="inventaire">
@@ -8,7 +10,7 @@
             </div>  
     </div>
    </div> -->
-    <div id="collection"?>
+    <div id="collection">
         <a href="index.php?controller=joueur&action=readAllCreatures" id="bouttonInventaire" class="ouvrir" aria-hidden="true" onclick="afficherInventaire()">Inventaire</a>
     </div>
 
@@ -26,25 +28,29 @@
     <div id="jardin">  
         <div class="bouton">
             <div>
-                <img src="view/images/aGauche.png" onclick="changerFontImage()"/>
+                <a href="index.php?controller=ICD&action=connexion&enclos=2">
+                <img src="view/images/aGauche.png"/>
+                </a>
             </div>
         </div>
-        <div id="boites">
+        <div id="boites" style="background-image:url(view/images/jardins/<?php echo $_SESSION['idEnclos']; ?>.jpg)">
       
-<div id='a'>
+        <div id='creature'>
     
-        <?php 
-            if(isset($_SESSION['jardin'])&& sizeof($_SESSION['jardin'])!=0){
-                foreach($_SESSION['jardin'] as $attribut=>$value){
-                    echo $value;
-                } 
-            }
-        ?>
-</div>
+            <?php 
+                if(isset($_SESSION['jardin'])&& sizeof($_SESSION['jardin'])!=0){
+                    foreach($_SESSION['jardin'] as $attribut=>$value){
+                        echo $value;
+                    } 
+                }
+            ?>
+        </div>
         </div>
         <div class="bouton">
             <div>
-                <img src="view/images/aDroite.png" onclick="changerFontImage2()"/>
+                <a href="index.php?controller=ICD&action=connexion&enclos=1">
+                    <img src="view/images/aDroite.png"/>
+                </a>
             </div>
         </div>
     </div>
