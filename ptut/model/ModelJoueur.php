@@ -56,7 +56,7 @@ class ModelJoueur{
             $nbCreature=$rep->fetchAll(PDO::FETCH_NUM);
 
             return "
-            <div id='avatar'><img src='view/images/poubelle.png'></div>
+            <div id='avatar'><img src='view/images/utilisateur/utilisateur.png'></div>
             <div>{$_SESSION['pseudo']}</div>
             <div>Dresseur depuis {$date[0]['tirage']} </div>
             <div>{$nbCreature[0][0]} créatures collectionnées</div>";

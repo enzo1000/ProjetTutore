@@ -231,7 +231,7 @@ class ModelCreature
                         <img src='{$dir_img}jambes/{$tab[$i]['IDJambe']}.png' class='jambes'/>
                     </a>
                     <a href='index.php?controller=creature&action=supJardin&attribut={$tab[$i]['IDCreature']}&enclos=$idEnclos'>
-                        <div class='supprimerCreature'> enlever</div></a>
+                        <div class='supprimerCreature'> </div></a>
                     </div>";
                     $_SESSION['jardin']["{$tab[$i]['IDCreature']}"] = $crea;
                 }

@@ -26,4 +26,21 @@ error_reporting(E_ALL);
   require_once File::build_path(array("controller","routeur.php"));
 ?>
 </body>
+
+<footer>
+    <div class="rarete">
+        <p class="rareteTexte"> Niveaux de rareté : </p>
+        <div class="bulle">
+            <div class="cercle" id="cercleorange"></div>
+        </div>
+        <p class="rareteTexte"> > </p>
+        <div class="bulle">
+            <div class="cercle" id="cerclevert"></div>
+        </div>
+        <p class="rareteTexte"> > </p>
+        <div class="bulle">
+            <div class="cercle" id="cercleblanc"></div>
+        </div>
+    </div>
+</footer>
 </html>

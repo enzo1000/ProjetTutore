@@ -302,6 +302,8 @@ main{
 
 }
 
+
+
 .boxCreature{
     /* flex-wrap: wrap; */
 
@@ -320,11 +322,13 @@ main{
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-
-    border: solid;
-    border-radius: 2em;
     
     min-width: 100px;
+}
+
+#volet .boxCreature{
+    border: solid;
+    border-radius: 2em;
 }
 
 .boxCreature p{
@@ -357,6 +361,27 @@ main{
     background-color: red;
     background-image: url("../images/poubelle.png");
 }
+
+
+
+#jardin .supprimerCreature{
+    border-radius: 100px;
+    margin: 10px 10px;
+    width: 1.5vw;
+    height: 1.5vw;
+    background-size: 1.5vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    right: 0;
+
+    position: absolute;
+    bottom: 0;
+
+    background-color: red;
+    background-image: url("../images/poubelle.png");
+}
+
 
 a.ouvrir, a.fermer {
     padding: 10px 5px;
@@ -410,4 +435,183 @@ align-self: center;}
     flex-direction: row;
 }
 .ajoutEnclos div{margin: 3%;}
+
+
+fieldset{
+    border: none;
+}
+
+.containerC{
+    border:2px solid cornflowerblue;
+    text-align:center;
+
+    height:60vh;
+    width:70vw;
+    margin: 10vh auto;
+    line-height: 1.5;
+
+    min-width: 800px;
+    min-height: 400px;
+}
+
+.containerI{
+    border:2px solid cornflowerblue;
+    text-align:center;
+
+    height:75vh;
+    width:70vw;
+    margin: 10vh auto;
+    line-height: 1.5;
+
+    min-width: 800px;
+    min-height: 550px;
+}
+.headForm{
+    height:90px;
+    width: 100%;
+    background-color:paleturquoise;
+}
+
+.ligne{
+    margin: 2% auto;
+    border: 1px solid black;
+    height: 1px;
+    width: 300px;
+}
+
+.input-group{
+    display: flex;
+    align-items: stretch;
+    width: 90%;
+}
+
+.label{
+
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    margin-right:  2%;
+    white-space: nowrap;
+}
+
+.labels {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btnConnection{
+    width: 20vw;
+    background-color: #5cb85c;
+    color: white;
+    font-size: 2.5vw;
+    border-radius: 0.25rem;
+    height: 10%;
+    min-height: 50px;
+}
+footer{
+
+    background-color: burlywood;
+    height: 10vh;
+}
+.rarete{
+    width: 80%;
+    margin: 0 auto;
+
+    height: 9vh;
+    background-color: #6B9A49;
+    vertical-align: baseline;
+}
+
+
+.bulle{
+    background-color: red;
+
+    width: 7vh;
+    height: 9vh;
+
+
+    display: inline-block;
+    /*margin: 2.5vh 1vw;
+
+     */
+}
+
+.cercle {
+    width: 6vh;
+    height: 6vh;
+    border-radius: 20px;
+    background: orange;
+    border: 1px solid black;
+    bottom: 0;
+
+    margin-top: 1.5vh;
+}
+
+#cercleorange{
+
+    background: orange;
+}
+
+#cerclevert{
+
+    background: green;
+}
+
+#cercleblanc{
+    background: white;
+}
+
+.errorMessage{
+    color: red;
+    position: center;
+    width: 500px;
+    height: 500px;
+    background-color: blue;
+}
+
+.errorMessage .message{
+
+    color: red;
+    position: center;
+    background-color: blue;
+}
+
+p.rareteTexte{
+    color: blueviolet;
+
+    height: 9vh;
+
+    font-size: 30px;
+
+
+    display: inline-block;
+}
+
 

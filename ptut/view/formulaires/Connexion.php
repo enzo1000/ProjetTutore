@@ -16,7 +16,7 @@ try {
     $requete->execute($values);
     $reponse = $requete->fetch(PDO::FETCH_NUM);
     if ($reponse == false) {
-        echo "mdp ou mail incorrect";
+    echo 'coucou je suis laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
         require "formConnexion.php";
         echo "<a href='formInscription.php'> pas de compte ? créer un compte mtn</a>";
     } else {
