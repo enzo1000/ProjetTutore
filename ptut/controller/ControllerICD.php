@@ -19,7 +19,7 @@ class ControllerICD{
        
         if ($reponse == false) {
             self::formConnexion();
-            echo "mdp ou mail incorrect";
+            echo "<div class='errorMessage'>mdp ou mail incorrect</div>";
             echo "<a href='index.php?controller=ICD&action=formInscription'> pas de compte ? créer un compte mtn</a>";
         } else {
             $_SESSION['joueur']=$reponse[0];
@@ -54,9 +54,10 @@ class ControllerICD{
                 self::formInscription();
                 echo "Ce mail a déjà été utilisée";
             }else{
-              ModelICD::connexion();
-              echo "Bienvenue !".$_POST['pseudo'];
-              echo "<a href='index.php?controller=ICD&action=formConnexion'> cliquez ici pour se connecter</a>";
+              ModelICD::inscription();
+              //echo "Bienvenue !".$_POST['pseudo'];
+              //echo "<a href='index.php?controller=ICD&action=formConnexion'> cliquez ici pour se connecter</a>";
+              self::connexion();
             }
         }  
     }
