@@ -16,9 +16,8 @@ try {
     $requete->execute($values);
     $reponse = $requete->fetch(PDO::FETCH_NUM);
     if ($reponse == false) {
-    echo 'coucou je suis laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+    echo "<div class='errorMessage'>Mot de passe ou mail incorrect</div>";
         require "formConnexion.php";
-        echo "<a href='formInscription.php'> pas de compte ? créer un compte mtn</a>";
     } else {
         $_SESSION['pseudo']=$reponse[0];
         $sql = "SELECT * FROM joueur WHERE mail=:value1";

@@ -590,17 +590,13 @@ footer{
 
 .errorMessage{
     color: red;
-    position: center;
-    width: 500px;
-    height: 500px;
-    background-color: blue;
+    margin: 0 auto;
+    font-size: 20px;
 }
 
 .errorMessage .message{
 
-    color: red;
-    position: center;
-    background-color: blue;
+
 }
 
 p.rareteTexte{
