@@ -4,6 +4,7 @@
 
 ::-webkit-scrollbar { display: none; }
 
+
 body, #boutton_tirage{
     display: flex;
     flex-direction: column;
@@ -539,22 +540,25 @@ footer{
 
     background-color: burlywood;
     height: 10vh;
+
+    position:absolute;
+    width: 100%;
+    bottom: 0;
+
 }
-.rarete{
-    width: 80%;
+
+
+.rare{
     margin: 0 auto;
 
-    height: 9vh;
-    background-color: #6B9A49;
-    vertical-align: baseline;
+    height: 10vh;
+    width: 60vw;
 }
 
 
 .bulle{
-    background-color: red;
 
-    width: 7vh;
-    height: 9vh;
+    width: 6vh;
 
 
     display: inline-block;
@@ -564,14 +568,16 @@ footer{
 }
 
 .cercle {
-    width: 6vh;
-    height: 6vh;
+    width: 4vh;
+    height: 4vh;
     border-radius: 20px;
     background: orange;
     border: 1px solid black;
-    bottom: 0;
+    margin: 0 1vh;
 
-    margin-top: 1.5vh;
+
+
+
 }
 
 #cercleorange{
@@ -594,20 +600,54 @@ footer{
     font-size: 20px;
 }
 
-.errorMessage .message{
+
+p.rareteTexte{
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+
+    height: 9vh;
+
+    font-size: 1.5em;
+
+
+    display: inline-block;
 
 
 }
 
-p.rareteTexte{
-    color: blueviolet;
+.homme{
+    margin: 20vh auto;
+}
 
-    height: 9vh;
-
-    font-size: 30px;
-
+.boxhome{
+    border: 2px double darkslategray;
+    width: 30vw;
+    height: 35vh;
+    min-height: 100px;
+    min-width: 200px;
+    font-size: 2em;
 
     display: inline-block;
+    background-color: paleturquoise;
+    text-align: center;
+    justify-content: center;
+    border-radius: 20px;
+
+}
+
+.boxhome a{
+    text-decoration:none;
+    color: white;
+    display: inline-block;
+    margin-top: 15%;
+    max-width: 300px;
+
+    height: 4em; /* hauteur du parent */
+    margin-bottom: 200px;
+
+
+
 }
 
 
