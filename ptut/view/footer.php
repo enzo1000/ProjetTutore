@@ -1,4 +1,3 @@
-<footer>
 <?php
 echo '<footer>
     <div class="rare">
@@ -17,4 +16,3 @@ echo '<footer>
     </div>
 </footer>';
 ?>
-</footer>

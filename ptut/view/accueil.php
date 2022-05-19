@@ -60,7 +60,5 @@
     if(isset($_SESSION['random'])){
         echo $_SESSION['random'];
     }
-
-    require_once 'footer.php';
 ?>
 

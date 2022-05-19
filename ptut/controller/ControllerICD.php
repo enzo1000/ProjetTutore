@@ -19,8 +19,8 @@ class ControllerICD{
        
         if ($reponse == false) {
             self::formConnexion();
-            echo "<div class='errorMessage'>mdp ou mail incorrect</div>";
-            echo "<a href='index.php?controller=ICD&action=formInscription'> pas de compte ? créer un compte mtn</a>";
+            echo "<div class='errorMessage'>Mot de passe ou mail incorrect</div>";
+
         } else {
             $_SESSION['joueur']=$reponse[0];
             $_SESSION['pseudo']=$reponse[0]['pseudo'];
@@ -46,13 +46,13 @@ class ControllerICD{
    public static function inscription(){
     if($_POST['mdp']!=$_POST['mdp2']){
         self::formInscription();
-        echo "<p>deux mdp non identiques, veuillez resaisir <p>";
+        echo "<div class='errorMessage'>Les deux mot de passe ne sont pas identiques, veuillez ressaisir </div>>";
       }
       else{
             $reponse=ModelICD::verifieInscription();
             if($reponse!=0){
                 self::formInscription();
-                echo "Ce mail a déjà été utilisée";
+                echo "<div class='errorMessage'>Ce mail a déjà été utilisé, merci dans choisir un autre ou de vous connecter</div>";
             }else{
               ModelICD::inscription();
               //echo "Bienvenue !".$_POST['pseudo'];

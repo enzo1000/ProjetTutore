@@ -539,12 +539,12 @@ fieldset{
 footer{
 
     background-color: burlywood;
-    height: 10vh;
+    height: 90px;
 
-    position:absolute;
+    position: absolute;
     width: 100%;
-    bottom: 0;
 
+    margin-top: 715px;
 }
 
 

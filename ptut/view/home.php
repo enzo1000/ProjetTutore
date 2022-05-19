@@ -1,7 +1,6 @@
-
 <?php
 
-    echo "<div class='homme'>
+echo "<div class='homme'>
 <div class='boxhome'>
             <a href='index.php?controller=ICD&action=formConnexion'>cliquez ici pour se connecter</a>
             </div>
