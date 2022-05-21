@@ -58,7 +58,7 @@ class ModelJoueur{
             return "
             <div id='avatar'><img src='view/images/utilisateur/utilisateur.png'></div>
             <div>{$_SESSION['pseudo']}</div>
-            <div>Dresseur depuis {$date[0]['tirage']} </div>
+            <div>Derniere tirage : {$date[0]['tirage']} </div>
             <div>{$nbCreature[0][0]} créatures collectionnées</div>";
         }
         catch(PDOException $e) {

@@ -1,6 +1,6 @@
 <?php
 
-echo "<div class='homme'>
+echo "<h1 class='welcom'>Bienvenue sur CréAnimals </h1><div class='homme'>
 <div class='boxhome'>
             <a href='index.php?controller=ICD&action=formConnexion'>cliquez ici pour se connecter</a>
             </div>

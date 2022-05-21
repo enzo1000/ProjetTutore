@@ -9,7 +9,7 @@ body, #boutton_tirage{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font: small-caps bold 16px/2 cursive;
+    font: contextual bold 16px/2 cursive;
 }
 a:link 
 { 
@@ -617,7 +617,7 @@ p.rareteTexte{
 }
 
 .homme{
-    margin: 20vh auto;
+    margin: 10vh auto;
 }
 
 .boxhome{
@@ -646,8 +646,14 @@ p.rareteTexte{
     height: 4em; /* hauteur du parent */
     margin-bottom: 200px;
 
+}
 
-
+.welcom{
+    margin-left: auto;
+    margin-right: auto;
+    color: #5cb85c;
+    font-size: 50px;
+    font-family: "18thCentury";
 }
 
 
