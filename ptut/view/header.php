@@ -3,7 +3,7 @@
     echo "
     <div id='navbar'>
         <div id='joueur'><a href='index.php?controller=joueur&action=joueurInfo'> {$_SESSION['pseudo']} </a></div>
-        <div id='deconnexion'><a href='index.php?controller=ICD&action=deconnexion'> déconnection </a></div>";
+        <div id='deconnexion'><a href='index.php?controller=ICD&action=deconnexion'> déconnexion </a></div>";
 
     echo "</div>";
     ?>

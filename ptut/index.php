@@ -6,6 +6,7 @@
     <script src="view/js/jquery.js"></script>
     <script src="view/js/accueil.js"></script>
     <link rel="stylesheet" href="view/CSS/index.css">
+    <link rel="icon" href="./view/images/logo/CA.png" />
     <title><?php
         if (isset($_SESSION['pseudo']))
             echo "Jeu de {$_SESSION['pseudo']}";

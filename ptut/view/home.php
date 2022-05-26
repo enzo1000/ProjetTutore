@@ -1,11 +1,11 @@
 <?php
 
-echo "<h1 class='welcom'>Bienvenue sur CréAnimals </h1><div class='homme'>
+echo "<img class='welcom' src='./view/images/logo/CA.png'><div class='homme'>
 <div class='boxhome'>
-            <a href='index.php?controller=ICD&action=formConnexion'>cliquez ici pour se connecter</a>
+            <a href='index.php?controller=ICD&action=formConnexion'>Se connecter</a>
             </div>
             <div class='boxhome'>
-            <a href='index.php?controller=ICD&action=formInscription'>cliquez ici pour créer un compte</a>
+            <a href='index.php?controller=ICD&action=formInscription'>Créer un compte</a>
         </div>
         </div>";
 ?>
