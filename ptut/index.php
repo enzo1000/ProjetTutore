@@ -27,7 +27,7 @@ require_once File::build_path(array("controller", "routeur.php"));
 
 echo "</body>";
 
-require_once File::build_path(array("view", "footer.php"))
+//require_once File::build_path(array("view", "footer.php"))
 ?>
 
 

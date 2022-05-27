@@ -6,7 +6,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
     <fieldset>
         <div class="containerC">
             <div class="headForm">
-                <h1><i class="Titre" aria-hidden="true"></i> Connexion :</h1>
+                <h1><i class="Titre" aria-hidden="true"></i> Connexion</h1>
 
             </div>
             <br/><br/>

@@ -2,14 +2,6 @@
 <?php $_SESSION["inventaire"]="ferme";
 ?>
 <main id="test">
-  <!-- <div id="collection">
-    <div id="inventaire">
-            <div id="volet" style="left: -100%;" href="index.php?controller=joueur&action=readAllCreatures" >
-                <a href="#volet" class="ouvrir" aria-hidden="true" onclick="afficherInventaire()">Inventaire</a>
-                <a href="#inventaire" class="fermer" aria-hidden="true" onclick="fermerInventaire()">fermer</a>
-            </div>  
-    </div>
-   </div> -->
     <div id="collection">
         <a href="index.php?controller=joueur&action=readAllCreatures" id="bouttonInventaire" class="ouvrir" aria-hidden="true" onclick="afficherInventaire()">Inventaire</a>
     </div>
@@ -56,7 +48,9 @@
     </div>
 </main>
 
-<?php 
+
+<?php
+require_once File::build_path(array("view", "footer.php"));
     if(isset($_SESSION['random'])){
         echo $_SESSION['random'];
     }

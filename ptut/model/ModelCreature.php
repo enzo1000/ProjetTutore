@@ -59,9 +59,7 @@ class ModelCreature
 
     public static function supprimeCreatureSession()
     {
-
         unset($_SESSION['creature']);
-
     }
 
     public static function supprime_RandomSession()
@@ -87,10 +85,6 @@ class ModelCreature
     public static function random()
     {
         if (!isset($_SESSION['creature']['tete'])) {
-            $randCouleur = rand(1, 100);
-            if ($randCouleur <= 5) $randCouleur = "orange";
-            else if ($randCouleur <= 30 && $randCouleur > 5) $randCouleur = "green";
-            elseif ($randCouleur > 30) $randCouleur = "white";
 
             $pdo = Model::getPDO();
             $nbligne = $pdo->query("SELECT COUNT(IDTete) FROM tete");
@@ -99,7 +93,7 @@ class ModelCreature
 
             //random tete
             $randTete = rand(1, $nb);
-            //random corps selon la rareté
+            //random corps
             $randCorps = rand(1, 100);
             if ($randCorps <= 30) {
                 $randCorps = $randTete;
@@ -109,7 +103,7 @@ class ModelCreature
                 } while ($randCorps == $randTete);
             }
 
-            //random jambe selon la rareté
+            //random jambe
             $randJambe = rand(1, 100);
             if ($randJambe <= 30) {
                 $randJambe = $randTete;
@@ -118,6 +112,19 @@ class ModelCreature
                     $randJambe = rand(1, $nb);
                 } while ($randJambe == $randTete);
             }
+
+            if($randCorps==$randTete && $randCorps==$randJambe){
+                $randCouleur = rand(1, 2);
+                if ($randCouleur == 1) $randCouleur = "orange";
+                else $randCouleur = "green";
+            }
+            else {
+                $randCouleur = rand(1, 100);
+                if ($randCouleur <= 5) $randCouleur = "orange";
+                else if ($randCouleur <= 30 && $randCouleur > 5) $randCouleur = "green";
+                elseif ($randCouleur > 30) $randCouleur = "white";
+            }
+            
             //random PV
             $pv = rand(10, 200);
 
@@ -168,7 +175,6 @@ class ModelCreature
         $nomJambe = $pdo->query("SELECT nomJambe FROM jambe WHERE idJambe=$jambe");
         $nomJambe = $nomJambe->fetch(PDO::FETCH_ASSOC);
         $nomJambe = $nomJambe["nomJambe"];
-
         $_SESSION['creature']['nom'] = "{$nomTete}{$nomCorps}{$nomJambe}";
 
         $pdo->query("INSERT INTO creature 

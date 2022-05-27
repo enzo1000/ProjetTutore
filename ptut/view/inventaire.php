@@ -50,3 +50,6 @@ foreach($tab_c as $IDcreature){
 ?>
     </div>
 </main>
+<?php
+require_once File::build_path(array("view", "footer.php"));
+?>
