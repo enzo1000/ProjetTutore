@@ -27,7 +27,7 @@ else{
           $values = array(
               "value1" => $_POST['mail'],
               "value2" => $_POST['pseudo'],
-              "value3" => $_POST['mdp'],
+              "value3" => $_POST['mdp']
           );
         $requete->execute($values);
         echo "Bienvenue !".$_POST['pseudo'];
